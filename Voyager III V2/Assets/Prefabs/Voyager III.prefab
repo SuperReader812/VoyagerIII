@@ -130,6 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrustSpeed: 1000
   rotationSpeed: 100
+  mainEngine: {fileID: 8300000, guid: bb9728d39939f134f887b1b939c9f691, type: 3}
 --- !u!82 &1799752466
 AudioSource:
   m_ObjectHideFlags: 0
@@ -239,3 +240,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelWait: 1
+  crashSound: {fileID: 8300000, guid: 41c1d73d07849db4199dcc2822cbdf0b, type: 3}
+  finishSound: {fileID: 8300000, guid: b1507754e63e04b4e82b7f211b8d700b, type: 3}

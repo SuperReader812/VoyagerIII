@@ -14,6 +14,10 @@ public class CollisionController : MonoBehaviour
     Movement movement;
     AudioSource sound;
 
+    // STATE
+
+    bool isTransitioning = false;
+
     
     // Start and update
     void Start() 
@@ -26,6 +30,7 @@ public class CollisionController : MonoBehaviour
     // Private Methods
     private void OnCollisionEnter(Collision other) 
     {
+        if(isTransitioning){return;}
         switch(other.gameObject.tag)
         {
             // Checking if we crashed into something and running the appropriate methods
@@ -66,6 +71,8 @@ public class CollisionController : MonoBehaviour
     // Playing our particle system and sfx on death
     void CrashSequence()
     {
+        isTransitioning=true;
+        sound.Stop();
         movement.enabled=false;
         sound.PlayOneShot(crashSound);
         Invoke("ReloadScene",LevelWait);
@@ -74,6 +81,8 @@ public class CollisionController : MonoBehaviour
     // Playing our particle system and sfx on finish
     void BetterNewLevel()
     {
+        isTransitioning=true;
+        sound.Stop();
         movement.enabled=false;
         sound.PlayOneShot(finishSound);
         Invoke("LoadNextScene", LevelWait);
