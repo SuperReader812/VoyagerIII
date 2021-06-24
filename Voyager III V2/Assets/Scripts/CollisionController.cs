@@ -10,6 +10,8 @@ public class CollisionController : MonoBehaviour
     [SerializeField]int LevelWait;
     [SerializeField] AudioClip crashSound;
     [SerializeField] AudioClip finishSound;
+    [SerializeField] ParticleSystem crashParticles;
+    [SerializeField] ParticleSystem finishParticles;
     // CACHE
     Movement movement;
     AudioSource sound;
@@ -73,6 +75,7 @@ public class CollisionController : MonoBehaviour
     {
         isTransitioning=true;
         sound.Stop();
+        crashParticles.Play();
         movement.enabled=false;
         sound.PlayOneShot(crashSound);
         Invoke("ReloadScene",LevelWait);
@@ -83,6 +86,7 @@ public class CollisionController : MonoBehaviour
     {
         isTransitioning=true;
         sound.Stop();
+        finishParticles.Play();
         movement.enabled=false;
         sound.PlayOneShot(finishSound);
         Invoke("LoadNextScene", LevelWait);
